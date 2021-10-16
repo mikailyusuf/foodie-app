@@ -1,0 +1,8 @@
+{
+    "require" : {
+        "php" : ">=7.1.33",
+        "ext-mbstring": "*",
+        "phpmailer/phpmailer": "^6.5",
+      "ext-mysqli": "*"
+    }
+}
