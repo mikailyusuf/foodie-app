@@ -1,18 +1,6 @@
 <?php
 
 require_once('Authentication.php');
-
-// include 'token_generator.php';
-
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
-
-//Load Composer's autoloader
-// require 'vendor/autoload.php';
-
-//
 $authentication = new Authentication();
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
