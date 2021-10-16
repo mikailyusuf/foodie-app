@@ -6,7 +6,7 @@ $connection = new Connection();
 $authentication= new Authentication();
  
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
- 
+
         $json_string = file_get_contents( "php://input");
         $data = json_decode($json_string,true); 
 
@@ -19,7 +19,7 @@ $authentication= new Authentication();
               echo $message;
 		}
 		else{
-			$query = mysqli_query($connection->connectToLocalDb(),"select * from restaurants where email='$email' and user_password='$password'");
+			$query = mysqli_query($connection->connectToliveDb(),"select * from restaurants where email='$email' and user_password='$password'");
 
 //            var_dump($query);
 //            die();
