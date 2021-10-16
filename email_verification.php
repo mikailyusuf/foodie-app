@@ -14,7 +14,7 @@ $connection = new Connection();
 		mysqli_query($connection->connectToliveDb(),"update restaurants set is_verified ='1', is_active = '1' where id='$userId'");
 		?>
 		<p>Account Verified!</p>
-		<p><a href="index.php">Login Now</a></p>
+		<p><a href="https://rocky-badlands-50144.herokuapp.com/index.html">Login Now</a></p>
 		<?php
 	}
 	else{

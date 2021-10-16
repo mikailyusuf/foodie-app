@@ -2,7 +2,6 @@
 
 require_once ('Connection.php');
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'PHPMailer/Exception.php';
@@ -21,7 +20,6 @@ class Authentication{
 
     function verifyEmail($email){
          $connection = new Connection();
-        $token = bin2hex(random_bytes(50));
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             http_response_code(401);
@@ -32,7 +30,6 @@ class Authentication{
         else{
 
             try {
-
                 $query = mysqli_query($connection->connectToliveDb() , "SELECT * FROM restaurants where email='$email'");
 
                 if (mysqli_num_rows($query) > 0) {
@@ -104,7 +101,6 @@ class Authentication{
                       <h2>Thank you $username for Registering.</h2>
                       <p>Your Account:</p>
                       <p>Email: ".$email."</p>
-              
                       <p>Please click the link below to activate your account.</p>
                       <h4><a href='https://rocky-badlands-50144.herokuapp.com/email_verification.php?uid=$uuid&code=$code'>Activate My Account</h4>
                       </body>

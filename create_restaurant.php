@@ -37,13 +37,11 @@ if ($requestMethod == "POST") {
 
             $authentication = new Authentication();
 
-            $authentication->registerUser($name, $email, $phone, $address, $password);
+            if ($authentication->verifyEmail($email)) {
+                $authentication->registerUser($name, $email, $phone, $address, $password);
+            } else {
 
-//            if ($authentication->verifyEmail($email)) {
-//                $authentication->registerUser($name, $email, $phone, $address, $password);
-//            } else {
-//
-//            }
+            }
 
         }
 
