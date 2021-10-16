@@ -130,10 +130,8 @@ class Authentication{
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Email Verification';
             $mail->Body    = $message;
-            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
-            echo 'Message has been sent';
         }
         catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -1,11 +1,5 @@
 <?php
 require_once('Connection.php');
-
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "foodie";
-
 $connection = new Connection();
 
 // Create connection
@@ -30,7 +24,7 @@ reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
 if ($conn->query($sql) === TRUE) {
-  echo "Table Mcreated successfully";
+  echo "Table created successfully";
 } else {
   echo "Error creating table: " . $conn->error;
 }
