@@ -9,10 +9,9 @@ class Connection
     public $devDbname = "foodie";
 
      public $servername = "us-cdbr-east-04.cleardb.com";
-    public $username = "b3b7a278827dcb";
-    public $password = "bd4020e6";
-    public $dbname = "heroku_556bf5eabda18a8";
-
+    public $username = "b54f6b3845fedf";
+    public $password = "32832b94";
+    public $dbname = "heroku_fba6dceb3986572";
     function connectToLocalDb(){
         $conn = mysqli_connect($this->devServername, $this->devUsername, $this->devPassword, $this->devDbname);
         if (!$conn) {

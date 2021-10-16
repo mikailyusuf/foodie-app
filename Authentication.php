@@ -33,7 +33,7 @@ class Authentication{
 
             try {
 
-                $query = mysqli_query($connection->connectToLocalDb() , "SELECT * FROM restaurants where email='$email'");
+                $query = mysqli_query($connection->connectToliveDb() , "SELECT * FROM restaurants where email='$email'");
 
                 if (mysqli_num_rows($query) > 0) {
                     http_response_code(401);
@@ -68,7 +68,7 @@ class Authentication{
         VALUES ('$uuid','$name','$email','$phone','0','0','$address','$token','$password')";
 
 
-                 if (mysqli_query($connection->connectToLocalDb(), $sql)) {
+                 if (mysqli_query($connection->connectToliveDb(), $sql)) {
                    http_response_code(201);
                    $message = json_encode(array("message" => "User Created","status" => true));
                    echo $message;
@@ -77,7 +77,7 @@ class Authentication{
                  }
 
                  else {
-                     echo mysqli_error($connection->connectToLocalDb());
+                     echo mysqli_error($connection->connectToliveDb());
                    http_response_code(400);
 
                   }
@@ -94,7 +94,7 @@ class Authentication{
     }
 
     function sendMail($email,$username,$uuid,$code){
-
+            $serverUrl = $_SERVER['SERVER_NAME'];
         $message = "
                       <html>
                       <head>
@@ -106,7 +106,7 @@ class Authentication{
                       <p>Email: ".$email."</p>
               
                       <p>Please click the link below to activate your account.</p>
-                      <h4><a href='http://localhost/email_verification.php?uid=$uuid&code=$code'>Activate My Account</h4>
+                      <h4><a href='.$serverUrl./email_verification.php?uid=$uuid&code=$code'>Activate My Account</h4>
                       </body>
                       </html>
                       ";

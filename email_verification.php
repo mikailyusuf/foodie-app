@@ -6,12 +6,12 @@ $connection = new Connection();
 	$userId=$_GET['uid'];
 	$code=$_GET['code'];
  
-	$query=mysqli_query($connection->connectToLocalDb(),"select * from restaurants where id='$userId'");
+	$query=mysqli_query($connection->connectToliveDb(),"select * from restaurants where id='$userId'");
 	$row=mysqli_fetch_array($query);
  
 	if($row['token']==$code){
 		//activate account
-		mysqli_query($connection->connectToLocalDb(),"update restaurants set is_verified ='1' where id='$userId'");
+		mysqli_query($connection->connectToliveDb(),"update restaurants set is_verified ='1', is_active = '1' where id='$userId'");
 		?>
 		<p>Account Verified!</p>
 		<p><a href="index.php">Login Now</a></p>

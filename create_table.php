@@ -1,11 +1,15 @@
 <?php
+require_once('Connection.php.php');
+
 $servername = "localhost";
 $username = "root";
 $password = "password";
 $dbname = "foodie";
 
+$connection = new Connection();
+
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($connection->servername, $connection->username, $connection->password, $connection->dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
