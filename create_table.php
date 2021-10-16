@@ -1,5 +1,5 @@
 <?php
-require_once('Connection.php.php');
+require_once('Connection.php');
 
 $servername = "localhost";
 $username = "root";
