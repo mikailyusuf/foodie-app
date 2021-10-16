@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 // sql to create table
-$sql = "DELETE * FROM restaurants";
+$sql = "DELETE FROM restaurants";
 
 if ($conn->query($sql) === TRUE) {
     echo "Table Deleted successfully";
