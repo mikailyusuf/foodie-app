@@ -1,5 +1,5 @@
 <?php
 
-require_once('Authentication.php');
+echo $_SERVER['SERVER_NAME'];
 
-$auth = new Authentication();
+?>
