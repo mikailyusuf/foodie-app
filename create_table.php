@@ -5,9 +5,6 @@ $connection = new Connection();
 // Create connection
 $conn = new mysqli($connection->servername, $connection->username, $connection->password, $connection->dbname);
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 // sql to create table
 $sql = "CREATE TABLE restaurants (
@@ -23,11 +20,29 @@ user_password VARCHAR(50),
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
-if ($conn->query($sql) === TRUE) {
-  echo "Table created successfully";
+//if ($connection->connectToLocalDb()->query($sql) === TRUE) {
+//    echo "Table created successfully";
+//} else {
+//    echo "Error creating table: " . $conn->error;
+//}
+
+$createFoodItemSQL = "CREATE TABLE food_items (
+id VARCHAR(255) NOT NULL,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(50),
+price VARCHAR(50),
+restaurant_token VARCHAR(50),
+is_available VARCHAR(5),
+image_url VARCHAR(5),
+date_uploaded TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($connection->connectToLocalDb()->query($createFoodItemSQL) === TRUE) {
+    echo "Food Item created successfully";
 } else {
-  echo "Error creating table: " . $conn->error;
+    echo "Error creating food table: " . $conn->error;
 }
 
-$conn->close();
+
+$connection->connectToLocalDb()->close();
 ?>

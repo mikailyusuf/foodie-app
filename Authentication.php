@@ -102,7 +102,7 @@ class Authentication{
                       <p>Your Account:</p>
                       <p>Email: ".$email."</p>
                       <p>Please click the link below to activate your account.</p>
-                      <h4><a href='https://rocky-badlands-50144.herokuapp.com/email_verification.php?uid=$uuid&code=$code'>Activate My Account</h4>
+                      <h4><a href='https://rocky-badlands-50144.herokuapp.com/email_verification.html?uid=$uuid&code=$code'>Activate My Account</h4>
                       </body>
                       </html>
                       ";

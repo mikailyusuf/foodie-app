@@ -1,30 +1,65 @@
 <?php
-include 'config.php';
+require_once('ConnectionLocal.php');
+try {
+    $connecion = new  ConnectionLocal();
 
-try{
-$json_string = file_get_contents( "php://input");
-$data = json_decode($json_string,true);
+    $json_string = file_get_contents("php://input");
+    $data = json_decode($json_string, true);
 
-		$id=stripcslashes($data['id']);
-        $restaurant_id = mysqli_real_escape_string($CONNECTION, $id);
-	
+    $id = stripcslashes($data['id']);
+    $restaurant_id = mysqli_real_escape_string($connecion->connectToDb(), $id);
 
-        $sql = "SELECT * FROM foods WHERE restaurant_id = '$restaurant_id' ";  
-            $result = mysqli_query($CONNECTION, $sql);
-          
-            $emparray = array();
-            while($row =mysqli_fetch_assoc($result))
-            {
-                $emparray[] = $row;
-            }
-            
-            http_response_code(200);
-            echo json_encode($emparray);
-		
-}
-catch(Exception $e) {
-    http_response_code(400);
-    echo('Message: ' .$e->getMessage());
-    $message = json_encode(array("message" => $e->getMessage(),"status" => false));	
+    $query = "SELECT * FROM food_items WHERE restaurant_token = '$restaurant_id'";
+
+    $result = $connecion->connectToDb()->query($query);
+
+    if ($result->num_rows >= 1) {
+        $emparray = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $emparray[] = $row;
+        }
+        echo json_encode($emparray);
+    }
+
+} catch (Exception $e) {
+    http_response_code(401);
+    echo('Message: ' . $e->getMessage());
+    $message = json_encode(array("message" => $e->getMessage(), "status" => false));
     echo $message;
-  }
+}
+
+
+
+
+
+
+//<?php
+//include 'config.php';
+//
+//try{
+//$json_string = file_get_contents( "php://input");
+//$data = json_decode($json_string,true);
+//
+//		$id=stripcslashes($data['id']);
+//        $restaurant_id = mysqli_real_escape_string($CONNECTION, $id);
+//
+//
+//        $sql = "SELECT * FROM foods WHERE restaurant_id = '$restaurant_id' ";
+//            $result = mysqli_query($CONNECTION, $sql);
+//
+//            $emparray = array();
+//            while($row =mysqli_fetch_assoc($result))
+//            {
+//                $emparray[] = $row;
+//            }
+//
+//            http_response_code(200);
+//            echo json_encode($emparray);
+//
+//}
+//catch(Exception $e) {
+//    http_response_code(400);
+//    echo('Message: ' .$e->getMessage());
+//    $message = json_encode(array("message" => $e->getMessage(),"status" => false));
+//    echo $message;
+//  }

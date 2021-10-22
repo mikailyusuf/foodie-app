@@ -145,7 +145,7 @@ function check_input($value){
                       <p>Email: ".$email."</p>
               
                       <p>Please click the link below to activate your account.</p>
-                      <h4><a href='http://localhost/email_verification.php?uid=$uid&code=$code'>Activate My Account</h4>
+                      <h4><a href='http://localhost/email_verification.html?uid=$uid&code=$code'>Activate My Account</h4>
                       </body>
                       </html>
                       ";
