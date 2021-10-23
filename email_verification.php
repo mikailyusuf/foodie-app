@@ -59,7 +59,9 @@ if (isset($_GET['code'])) {
 
 <div class="container">
     <div class="center">
-        <button type="button" class="btn btn-primary"><a href="web/index.html"> Check us Out</a></button>
+        <a href="web/index.html">
+            <button type="button" class="btn btn-primary">Check us Out</button>
+        </a>
     </div>
 </div>
 </body>

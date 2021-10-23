@@ -1,5 +1,5 @@
 <?php
-require_once('ConnectionLocal.php');
+require_once('Connection.php');
 try {
     $connecion = new  ConnectionLocal();
 
