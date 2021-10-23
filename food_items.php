@@ -1,7 +1,13 @@
+<html>
+<head>
+    <title>Food Items</title>
+</head>
+<body>
+
 <?php
 require_once('Connection.php');
 try {
-    $connection = new  ConnectionLocal();
+    $connection = new  Connection();
 
     $query = "SELECT * FROM `food_items`";
     $result = $connection->connectToDb()->query($query);
@@ -39,3 +45,7 @@ try {
     $message = json_encode(array("message" => $e->getMessage(), "status" => false));
     echo $message;
 }
+?>
+
+</body>
+</html>
