@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-require_once('ConnectionLocal.php');
+require_once('Connection.php');
 header("Content-Type: application/json");
 header("Acess-Control-Allow-Origin: *");
 header("Acess-Control-Allow-Methods: POST");
@@ -16,7 +16,7 @@ $fileSize = $_FILES['food_image']['size'];
 $name = $_POST['name'];
 $description = $_POST['description'];
 $price = $_POST['price'];
-$restaurantId = $_POST['restaurant_id'];
+$restaurantId = $_POST['restaurant_token'];
 
 $min_rand = rand(0, 1000);
 $max_rand = rand(100000000000, 10000000000000000);
@@ -65,7 +65,7 @@ if (empty($fileName)) {
 $imageName = $upload_path . $fileName;
 // if no error caused, continue ....
 if (!isset($errorMSG)) {
-    $connecion = new  ConnectionLocal();
+    $connecion = new  Connection();
     $conn = new mysqli($connecion->servername, $connecion->username, $connecion->password, $connecion->dbname);
     $uuid = uniqid();
 
@@ -83,18 +83,6 @@ if (!isset($errorMSG)) {
         echo $message;
     }
 
-//    if (mysqli_query($CONNECTION, $sql)) {
-//        $message = json_encode(array("message" => "Food Created Successfully", "status" => true));
-//		http_response_code(201);
-//        echo $message;
-//    }
-//	else {
-//		echo "An error occured";
-//		http_response_code(400);
-//        $message = json_encode(array("message" => mysqli_error($CONNECTION), "status" => false));
-//        echo $message;
-//
-//    }
 } else {
     http_response_code(400);
 }
