@@ -19,7 +19,7 @@ $authentication= new Authentication();
               echo $message;
 		}
 		else{
-			$query = mysqli_query($connection->connectToliveDb(),"select * from restaurants where email='$email' and user_password='$password'");
+			$query = mysqli_query($connection->connectToDb(),"select * from restaurants where email='$email' and user_password='$password'");
 
 //            var_dump($query);
 //            die();

@@ -12,15 +12,15 @@ class Connection
     public $username = "b54f6b3845fedf";
     public $password = "32832b94";
     public $dbname = "heroku_fba6dceb3986572";
-    function connectToLocalDb(){
-        $conn = mysqli_connect($this->devServername, $this->devUsername, $this->devPassword, $this->devDbname);
-        if (!$conn) {
-            die("Connection failed:" . mysqli_connect_error());
-        }
-        return $conn;
-    }
+//    function connectToLocalDb(){
+//        $conn = mysqli_connect($this->devServername, $this->devUsername, $this->devPassword, $this->devDbname);
+//        if (!$conn) {
+//            die("Connection failed:" . mysqli_connect_error());
+//        }
+//        return $conn;
+//    }
 
-    function connectToliveDb(){
+    function connectToDb(){
         $conn = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
         if (!$conn) {
             die("Connection failed:" . mysqli_connect_error());

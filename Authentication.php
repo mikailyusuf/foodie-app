@@ -30,7 +30,7 @@ class Authentication{
         else{
 
             try {
-                $query = mysqli_query($connection->connectToliveDb() , "SELECT * FROM restaurants where email='$email'");
+                $query = mysqli_query($connection->connectToDb() , "SELECT * FROM restaurants where email='$email'");
 
                 if (mysqli_num_rows($query) > 0) {
                     http_response_code(401);
@@ -65,7 +65,7 @@ class Authentication{
         VALUES ('$uuid','$name','$email','$phone','0','0','$address','$token','$password')";
 
 
-                 if (mysqli_query($connection->connectToliveDb(), $sql)) {
+                 if (mysqli_query($connection->connectToDb(), $sql)) {
                    http_response_code(201);
                    $message = json_encode(array("message" => "User Created","status" => true));
                    echo $message;
@@ -74,7 +74,7 @@ class Authentication{
                  }
 
                  else {
-                     echo mysqli_error($connection->connectToliveDb());
+                     echo mysqli_error($connection->connectToDb());
                    http_response_code(400);
 
                   }

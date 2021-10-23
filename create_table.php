@@ -27,22 +27,22 @@ reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 //}
 
 $createFoodItemSQL = "CREATE TABLE food_items (
-id VARCHAR(255) NOT NULL,
-name VARCHAR(30) NOT NULL,
+id VARCHAR(50) NOT NULL,
+name VARCHAR(50) NOT NULL,
 description VARCHAR(50),
 price VARCHAR(50),
 restaurant_token VARCHAR(50),
 is_available VARCHAR(5),
-image_url VARCHAR(5),
+image_url VARCHAR(50),
 date_uploaded TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
-if ($connection->connectToLocalDb()->query($createFoodItemSQL) === TRUE) {
+if ($connection->connectToDb()->query($createFoodItemSQL) === TRUE) {
     echo "Food Item created successfully";
 } else {
     echo "Error creating food table: " . $conn->error;
 }
 
 
-$connection->connectToLocalDb()->close();
+$connection->connectToDb()->close();
 ?>
