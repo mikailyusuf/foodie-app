@@ -2,21 +2,28 @@
 require_once('Connection.php');
 $connection = new Connection();
 
-// Create connection
-$conn = new mysqli($connection->servername, $connection->username, $connection->password, $connection->dbname);
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($connection->connectToDb()->connect_error) {
+    die("Connection failed: " . $connection->connectToDb()->connect_error);
 }
 
 // sql to create table
-$sql = "DELETE FROM restaurants";
+//$sql = "DELETE FROM restaurants";
+//
+//if ($connection->connectToDb()->query($sql) === TRUE) {
+//    echo "Table Deleted successfully";
+//} else {
+//    echo "Error creating table: " . $connection->connectToDb()->error;
+//}
 
-if ($conn->query($sql) === TRUE) {
+$sql = "DELETE FROM food_items";
+
+
+if ($connection->connectToDb()->query($sql) === TRUE) {
     echo "Table Deleted successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table: " . $connection->connectToDb()->error;
 }
 
-$conn->close();
+$connection->connectToDb()->close();
 ?>
